@@ -1,5 +1,5 @@
 [workspace]
 members = [
-    "BasicPlayground",
+    "basic_playground",
     "split_str_lib"
 ]
