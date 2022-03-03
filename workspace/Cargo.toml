@@ -1,5 +1,9 @@
 [workspace]
 members = [
-    "basic_playground",
-    "split_str_lib"
+  "basic_playground",
+  "split_str_lib",
+  "read_files",
+  "hello_macro",
+  'hello_macro_derive',
+  'pancakes',
 ]
