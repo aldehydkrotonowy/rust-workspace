@@ -11,4 +11,5 @@ members = [
   'triangle',
   'std_adventure',
   'witter_backend',
+  'rocket_web_server',
 ]

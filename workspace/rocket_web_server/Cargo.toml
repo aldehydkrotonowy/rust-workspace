@@ -1,0 +1,11 @@
+[package]
+authors = ["norbert gajda <norbert.gajda@gmail.com>"]
+edition = "2021"
+name = "rocket_web_server"
+version = "0.1.0"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+rocket = "0.4.10"
+rusqlite = {version = "0.27.0", features = ["bundled"]}
