@@ -1,6 +1,10 @@
-1. add new workspace
-   cargo new some_name [--lib]
-2. edit cargo.toml
+### add new workspace
+
+cargo new some_name [--lib]
+
+### add entry cargo.toml
+
+add new member to members array
 
 A. watch and rebuild in workspace
 cargo watch -x "run --bin rocket_web_server"

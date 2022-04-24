@@ -14,7 +14,8 @@ use proc_macro::TokenStream;
 
 // The syn crate parses Rust code from a string into a data structure
 // that we can perform operations on
-use syn;
+// use syn;
+
 // The quote crate turns syn data structures back into Rust code.
 use quote::quote;
 

@@ -58,6 +58,28 @@ fn fetch_all_todo_items() -> Result<Json<TodoList>, String> {
     }
 }
 
+#[delete("/todo/<id>")]
+fn delete_todo_item(id: i64) -> Result<Json<StatusMsg>, String> {
+    let db_conn = match rusqlite::Connection::open("data.sqlite") {
+        Ok(connection) => connection,
+        Err(_) => return Err("could not open db".into()),
+    };
+
+    let mut query = match db_conn.prepare("delete from todo_list where id = $1;") {
+        Ok(query) => query,
+        Err(_) => return Err("could not delete data".into()),
+    };
+
+    let results = query.execute(&[&id]);
+
+    match results {
+        Ok(rows_affected) => Ok(Json(StatusMsg {
+            message: format!("{} rows deleted", rows_affected),
+        })),
+        Err(_) => Err("Feild to insert todo items into todo_list db".into()),
+    }
+}
+
 #[post("/todo", format = "json", data = "<item>")]
 fn add_todo_item(item: Json<String>) -> Result<Json<StatusMsg>, String> {
     let db_conn = match rusqlite::Connection::open("data.sqlite") {
@@ -95,6 +117,9 @@ fn main() {
             .expect("Cannot create table todo_list");
     }
     rocket::ignite()
-        .mount("/", routes![index, fetch_all_todo_items, add_todo_item])
+        .mount(
+            "/",
+            routes![index, fetch_all_todo_items, add_todo_item, delete_todo_item],
+        )
         .launch();
 }

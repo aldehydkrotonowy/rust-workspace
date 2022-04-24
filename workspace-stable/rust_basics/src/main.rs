@@ -4,6 +4,7 @@ mod random_info;
 // mod vect_hash_maps;
 
 use random_info::*;
+const PI: f32 = std::f32::consts::PI;
 
 #[allow(dead_code)]
 #[derive(Clone)]
@@ -30,14 +31,14 @@ impl Default for DougsData {
     fn default() -> Self {
         Self {
             some_bool: false,
-            some_float: 3.14,
+            some_float: PI,
             some_int: 5,
-            random: RandomInfo::default()
+            random: RandomInfo::default(),
         }
     }
 }
 
-fn pring_if_is_valid(check_me: &dyn SomeTrait){
+fn pring_if_is_valid(check_me: &dyn SomeTrait) {
     if check_me.is_valid() {
         println!("Horray!");
     }
@@ -45,8 +46,8 @@ fn pring_if_is_valid(check_me: &dyn SomeTrait){
 
 #[allow(unused_variables)]
 fn main() {
-	// pointer_ref::run();
-	// structures::run();
+    // pointer_ref::run();
+    // structures::run();
     let mut random_info_var = RandomInfo {
         call_count: 0,
         some_int: 334,
